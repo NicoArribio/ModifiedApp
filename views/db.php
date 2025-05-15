@@ -1,9 +1,9 @@
 <?php
 
-$host = '';
-$name = '';
-$user = '';
-$password = '';
+$host = 'db-obligatorio.cfanplfpi7x9.us-east-1.rds.amazonaws.com';
+$name = 'ecommerce';
+$user = 'admin';
+$password = 'admin1234';
 
 try {
 	$pdo = new PDO("mysql:host=$host;dbname=$name", $user, $password);
