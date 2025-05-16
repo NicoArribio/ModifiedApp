@@ -9,22 +9,27 @@ RUN git clone https://github.com/ORT-FI-7417-SolucionesCloud/e-commerce-obligato
 
 RUN chown -R apache:apache /var/www/html
 
-RUN echo '<VirtualHost *:80>\n\
-    ServerName localhost\n\
-    DocumentRoot "/var/www/html"\n\
-    <Directory "/var/www/html">\n\
-        Options Indexes FollowSymLinks\n\
-        AllowOverride All\n\
-        Require all granted\n\
-    </Directory>\n\
-</VirtualHost>' > /etc/httpd/conf.d/ecommerce.conf
+RUN bash -c 'cat > /etc/httpd/conf.d/ecommerce.conf <<EOF
+<VirtualHost *:80>
+    ServerName 192.168.0.100
+    DocumentRoot "/var/www/html"
 
-RUN echo 'RewriteEngine On\n\
-\n\
-RewriteCond %{REQUEST_FILENAME} !-f\n\
-RewriteCond %{REQUEST_FILENAME} !-d\n\
-\n\
-RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]' > /var/www/html/.htaccess
+    <Directory "/var/www/html">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+EOF'
 
+# Add .htaccess with routing rules
+RUN cat <<'EOF' > /var/www/html/.htaccess
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]
+EOF
 EXPOSE 80
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
