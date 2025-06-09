@@ -43,8 +43,8 @@ RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]
 
 ### Estructura del Proyecto
 
+```
 .
-
 ├── views/                # Vistas del sitio
 ├── index.php             # Punto de entrada principal
 ├── router.php            # Lógica de ruteo
@@ -53,6 +53,7 @@ RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]
 ├── README.md             # Documentación del proyecto
 ├── db-settings.sql       # Archivo para crear las tablas en la BD
 └── ...
+```
 
 ## Admin Credentials
 
