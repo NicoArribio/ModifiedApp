@@ -49,14 +49,10 @@ RewriteRule ^(.+)$ index.php?uri=$1 [QSA,L]
 ├── index.php             # Punto de entrada principal
 ├── router.php            # Lógica de ruteo
 ├── csrf.php              # Protección CSRF
-├── htaccess              # Reglas de reescritura para Apache
+├── .htaccess             # Reglas de reescritura para Apache
 ├── README.md             # Documentación del proyecto
 ├── db-settings.sql       # Archivo para crear las tablas en la BD
 └── ...
-
-```sh
-
-```
 
 ## Admin Credentials
 
