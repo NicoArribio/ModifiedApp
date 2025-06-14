@@ -1,7 +1,7 @@
 <?php 
-
-require __DIR__ . '/header.php'; 
+ 
 require __DIR__ . '/db.php';
+require __DIR__ . '/header.php';
 
 $items;
 $statement = $pdo->prepare("SELECT * FROM products ORDER BY rand() LIMIT 9");
