@@ -19,10 +19,6 @@ COPY .htaccess /var/www/html/
 # Cada vez que edites el Dockerfile por encima de esta línea, se reconstruirá todo.
 RUN echo "Cache bust for SetEnv: $(date)"
 
-# Copiar y habilitar el archivo de entorno de Apache
-COPY docker-apache-env.conf /etc/apache2/conf-available/docker-apache-env.conf
-RUN a2enconf docker-apache-env
-
 # Copiar todos los archivos de la aplicación al directorio web
 COPY . /var/www/html/
 
