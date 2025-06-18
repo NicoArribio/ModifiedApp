@@ -24,7 +24,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    // Si la conexión falla AUNQUE las variables estén bien
+ 
     die("Error de conexión a la base de datos (con getenv()): " . $e->getMessage() . "<br>" .
         "DSN usado: " . htmlspecialchars($dsn) . "<br>" .
         "Usuario: " . htmlspecialchars($user)
