@@ -1,16 +1,12 @@
 <?php
 
-// Asegúrate de que esta línea exista, incluso si está vacía.
-// Usaremos getenv() para obtener los valores.
 $host = getenv('DB_HOST');
 $dbname = getenv('DB_NAME');
 $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
-$port = getenv('DB_PORT') ?: '3306'; // Usar 3306 como fallback si no se obtiene del entorno
+$port = getenv('DB_PORT') ?: '3306';
 
-// ***************************************************************
-// ESTE BLOQUE ES CRÍTICO PARA LA DEPURACIÓN:
-// Si las variables no se cargan, detendrá la ejecución con un mensaje claro.
+
 if (!$host || !$dbname || !$user || !$password) {
     die("Error: Las variables de entorno de la base de datos no están configuradas correctamente o están vacías.<br>" .
         "HOST: '" . htmlspecialchars($host) . "'<br>" .
@@ -21,7 +17,6 @@ if (!$host || !$dbname || !$user || !$password) {
         "Por favor, revisa docker-apache-env.conf y la configuración del Dockerfile."
     );
 }
-// ***************************************************************
 
 try {
     $dsn = "mysql:host=$host;dbname=$dbname;port=$port;charset=utf8mb4";
